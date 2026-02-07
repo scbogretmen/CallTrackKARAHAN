@@ -6,7 +6,7 @@ Bu dosya, güvenlik, iş kuralları ve sistem davranışı için kritik olan kod
 
 ## 1. Uygulama Başlangıcı ve Yapılandırma
 
-**Dosya:** `CallTrackMVP.Web/Program.cs`
+**Dosya:** `CallTrackKARAHAN.Web/Program.cs`
 
 ### Çalışma dizini (Windows Service)
 
@@ -15,7 +15,7 @@ var contentRoot = AppContext.BaseDirectory;
 Directory.SetCurrentDirectory(contentRoot);
 ```
 
-Service, exe’nin bulunduğu klasörü (örn. C:\CallTrackMVP) çalışma dizini yapar; `Data\CallTrack.db` ve appsettings bu dizine göre çözülür.
+Service, exe’nin bulunduğu klasörü (örn. C:\CallTrackKARAHAN) çalışma dizini yapar; `Data\CallTrack.db` ve appsettings bu dizine göre çözülür.
 
 ### HTTP/HTTPS ve port
 
@@ -56,7 +56,7 @@ builder.Services.AddAuthentication("CookieAuth")
 
 ## 2. Kimlik Doğrulama (Giriş)
 
-**Dosya:** `CallTrackMVP.Web/Controllers/AuthController.cs`
+**Dosya:** `CallTrackKARAHAN.Web/Controllers/AuthController.cs`
 
 ### Şifre doğrulama
 
@@ -100,7 +100,7 @@ Rol ve kullanıcı kimliği bu claim’lerden okunur; `[Authorize(Roles = "Admin
 
 ## 3. Yetkilendirme ve Veri Filtreleme
 
-**Dosya:** `CallTrackMVP.Web/Controllers/CallLogsController.cs`
+**Dosya:** `CallTrackKARAHAN.Web/Controllers/CallLogsController.cs`
 
 ### User rolü: Sadece kendi kayıtları
 
@@ -138,7 +138,7 @@ Claim yoksa veya parse edilemezse `null` döner; Create’te `userId` yoksa kay�
 
 ### Tarih + Çağrı No benzersizliği
 
-**Dosya:** `CallTrackMVP.Web/Controllers/CallLogsController.cs`
+**Dosya:** `CallTrackKARAHAN.Web/Controllers/CallLogsController.cs`
 
 **Create (POST):**
 
@@ -160,7 +160,7 @@ Veritabanında da **AppDbContext** içinde `CallLog` için `(Tarih, CagriNo)` un
 
 ### Kullanıcı silme kuralları
 
-**Dosya:** `CallTrackMVP.Web/Controllers/AdminController.cs` – `DeleteUserConfirmed`
+**Dosya:** `CallTrackKARAHAN.Web/Controllers/AdminController.cs` – `DeleteUserConfirmed`
 
 | Kural | Kod / Kontrol |
 |-------|----------------|
@@ -172,7 +172,7 @@ Bu kontroller olmadan son admin kaldırılabilir veya veri bütünlüğü bozula
 
 ### Çağrı tipi silme
 
-**Dosya:** `CallTrackMVP.Web/Controllers/AdminController.cs` – `DeleteCallTypeConfirmed`
+**Dosya:** `CallTrackKARAHAN.Web/Controllers/AdminController.cs` – `DeleteCallTypeConfirmed`
 
 ```csharp
 if (await _db.CallLogs.AnyAsync(c => c.CagriTuru == type.Name, cancellationToken))
@@ -188,7 +188,7 @@ Kullanımda olan çağrı tipi silinmez; referans bütünlüğü korunur.
 
 ## 5. Veritabanı: Index ve İlişkiler
 
-**Dosya:** `CallTrackMVP.Web/Data/AppDbContext.cs` – `OnModelCreating`
+**Dosya:** `CallTrackKARAHAN.Web/Data/AppDbContext.cs` – `OnModelCreating`
 
 | Entity | Kritik ayar |
 |--------|-------------|
@@ -203,7 +203,7 @@ Bu index’ler ve delete davranışları değiştirilirse migration gerekir ve m
 
 ## 6. Varsayılan Kullanıcılar ve Şifreler (Seed)
 
-**Dosya:** `CallTrackMVP.Web/Data/DbInitializer.cs` – `InitializeAsync`
+**Dosya:** `CallTrackKARAHAN.Web/Data/DbInitializer.cs` – `InitializeAsync`
 
 ```csharp
 var users = new[]

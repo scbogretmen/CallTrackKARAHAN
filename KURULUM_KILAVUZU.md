@@ -1,6 +1,6 @@
-# CallTrack MVP – Kurulum Kılavuzu
+# CallTrack KARAHAN – Kurulum Kılavuzu
 
-Bu kılavuz, CallTrack MVP (Çağrı Takip) uygulamasının kurulumu, çalıştırılması ve program aktifken geçerli olan varsayılan ayarları açıklar. Sürüm notları ve güncellemeler için **GUNCELLEMELER.md** dosyasına bakın.
+Bu kılavuz, CallTrack KARAHAN (Çağrı Takip) uygulamasının kurulumu, çalıştırılması ve program aktifken geçerli olan varsayılan ayarları açıklar. Sürüm notları ve güncellemeler için **GUNCELLEMELER.md** dosyasına bakın.
 
 ---
 
@@ -18,15 +18,15 @@ Bu kılavuz, CallTrack MVP (Çağrı Takip) uygulamasının kurulumu, çalışt�
 
 ### 2.1 Tek Paket – Kurulum EXE (En Kolay, Önerilen)
 
-**CallTrackMVP_Setup.exe** tek bir dosyadır; içinde uygulama ve kurulum vardır. Kullanıcıya sadece bu dosyayı verirsiniz.
+**CallTrackKARAHAN_Setup.exe** tek bir dosyadır; içinde uygulama ve kurulum vardır. Kullanıcıya sadece bu dosyayı verirsiniz.
 
 **Yapılacaklar:**
 
-1. **CallTrackMVP_Setup.exe** dosyasını hedef bilgisayara kopyalayın (USB, ağ, e‑posta vb.).
+1. **CallTrackKARAHAN_Setup.exe** dosyasını hedef bilgisayara kopyalayın (USB, ağ, e‑posta vb.).
 2. Dosyaya **çift tıklayın**.
 3. Windows “Bu uygulama bilgisayarınızda değişiklik yapmak istiyor” diyorsa **Evet** deyin (yönetici izni).
-4. Kurulum otomatik ilerler: **C:\CallTrackMVP** oluşturulur, dosyalar çıkarılır, Windows servisi kurulur, tarayıcı açılır.
-5. Açılan sayfada **http://localhost:50201** (veya 50202) ile giriş yapın. Varsayılan kullanıcılar bölüm 3.4’te.
+4. Kurulum otomatik ilerler: **C:\CallTrackKARAHAN** oluşturulur, dosyalar çıkarılır, Windows servisi kurulur, tarayıcı açılır.
+5. Açılan sayfada **http://localhost:5520** (veya 5521, port meşgulse) ile giriş yapın. Varsayılan kullanıcılar bölüm 3.4’te.
 
 **Not:** Kurulum EXE tek paket olduğu için **.NET 8 Runtime** ayrıca yüklü olmasa da çalışır (paket kendi çalışma ortamını içerir). Solution veya Publish klasörü gerekmez.
 
@@ -35,7 +35,7 @@ Proje kök dizininde (solution’ın olduğu klasörde) PowerShell ile:
 ```powershell
 .\build-installer.ps1
 ```
-Çıktı: `CallTrackMVP.Installer\bin\SetupOutput\CallTrackMVP_Setup.exe`
+Çıktı: `CallTrackKARAHAN.Installer\bin\SetupOutput\CallTrackKARAHAN_Setup.exe`
 
 ### 2.2 Publish Klasörü + Kurulum.bat
 
@@ -43,7 +43,7 @@ Publish klasörünün tamamına sahip olan kullanıcılar için:
 
 1. **Publish** klasörünün **tüm içeriğini** hedef bilgisayara kopyalayın. Klasör adı/konumu önemli değil.
 2. **Kurulum.bat** dosyasına **çift tıklayın**, yönetici izni verin.
-3. Kurulum otomatik ilerler (C:\CallTrackMVP, servis, tarayıcı). Giriş: **http://localhost:50201** (veya 50202).
+3. Kurulum otomatik ilerler (C:\CallTrackKARAHAN, servis, tarayıcı). Giriş: **http://localhost:5520** (veya 5521, port meşgulse).
 
 **Not:** Bu yöntemde bilgisayarda **.NET 8 Runtime** yüklü olmalıdır.
 
@@ -51,30 +51,32 @@ Publish klasörünün tamamına sahip olan kullanıcılar için:
 
 PowerShell ile kendiniz kurmak isterseniz:
 
-**Adım 1 –** Publish içeriğini hedef bilgisayarda **C:\CallTrackMVP** klasörüne kopyalayın.
+**Adım 1 –** Publish içeriğini hedef bilgisayarda **C:\CallTrackKARAHAN** klasörüne kopyalayın.
 
 **Adım 2 –** **Yönetici** olarak PowerShell açın ve:
 
 ```powershell
-cd C:\CallTrackMVP
+cd C:\CallTrackKARAHAN
 .\install-service.ps1
 ```
 
-**Adım 3 –** Tarayıcıda **http://localhost:50201** yazın (port değiştirdiyseniz o portu kullanın).
+**Adım 3 –** Tarayıcıda **http://localhost:5520** yazın (port değiştirdiyseniz o portu kullanın).
 
 ### 2.4 Publish Klasörünü veya Kurulum EXE’yi Kim Oluşturur?
 
 Publish klasörü, projeyi geliştiren veya derleyen kişi tarafından **bir kez** oluşturulur. Ağdaki diğer bilgisayarlarda sadece bu hazır klasör kullanılır; o bilgisayarlarda solution açılması veya Visual Studio gerekmez.
 
+**Kaynak kodu indirmek:** [https://github.com/scbogretmen/CallTrackKARAHAN](https://github.com/scbogretmen/CallTrackKARAHAN)
+
 **Publish oluşturmak (sadece geliştirici/build makinesinde):**
 
-1. Çözümü açın: `CallTrackMVP.sln`
+1. Çözümü açın: `CallTrackKARAHAN.sln`
 2. Proje klasörüne gidip publish alın:
    ```powershell
-   cd d:\Projeler\Vestel\CallTrackMVP.Web
+   cd d:\Projeler\Vestel\CallTrackKARAHAN.Web
    dotnet publish -c Release -o ..\Publish
    ```
-3. **Tek paket dağıtmak için:** Proje kökünde `.\build-installer.ps1` çalıştırıp **CallTrackMVP_Setup.exe** üretin; bu dosyayı dağıtın (bkz. **2.1**).  
+3. **Tek paket dağıtmak için:** Proje kökünde `.\build-installer.ps1` çalıştırıp **CallTrackKARAHAN_Setup.exe** üretin; bu dosyayı dağıtın (bkz. **2.1**).  
    **Publish klasörü dağıtmak için:** Oluşan **Publish** içeriğini kopyalayıp **Kurulum.bat**’e çift tıklamalarını söyleyin (bkz. **2.2**).
 
 ---
@@ -88,10 +90,10 @@ Uygulama çalışırken aşağıdaki ayarlar varsayılan olarak geçerlidir (öz
 | Ayar | Windows Service (Sunucu) | Geliştirme (dotnet run) |
 |------|---------------------------|--------------------------|
 | **Protokol** | HTTP | HTTPS |
-| **Port** | 50201 | 50201 (HTTPS), 50202 (HTTP – launchSettings) |
-| **Dinlenen adres** | `http://0.0.0.0:50201` | `https://0.0.0.0:50201` |
-| **Sunucudan erişim** | http://localhost:50201 | https://localhost:50201 |
-| **LAN’dan erişim** | http://SUNUCU_IP:50201 | https://BILGISAYAR_IP:50201 |
+| **Port** | 5520 (Kurulum.bat ile; meşgulse 5521) | 50201 (HTTPS), 50202 (HTTP – launchSettings) |
+| **Dinlenen adres** | `http://0.0.0.0:5520` | `https://0.0.0.0:50201` |
+| **Sunucudan erişim** | http://localhost:5520 | https://localhost:50201 |
+| **LAN’dan erişim** | http://SUNUCU_IP:5520 | https://BILGISAYAR_IP:50201 |
 
 **Not:** Service modunda tarayıcıda mutlaka **http://** yazın; yoksa “Bu site güvenli bağlantı sağlayamıyor” hatası alabilirsiniz.
 
@@ -153,12 +155,12 @@ Uygulama çalışırken aşağıdaki ayarlar varsayılan olarak geçerlidir (öz
 
 | İşlem | Komut (Yönetici PowerShell) |
 |-------|-----------------------------|
-| Servisi başlat | `Start-Service -Name CallTrackMVP` |
-| Servisi durdur | `Stop-Service -Name CallTrackMVP` |
-| Durumu kontrol et | `Get-Service -Name CallTrackMVP` |
-| Servisi kaldır | `cd C:\CallTrackMVP` ardından `.\uninstall-service.ps1` |
+| Servisi başlat | `Start-Service -Name CallTrackKARAHAN` |
+| Servisi durdur | `Stop-Service -Name CallTrackKARAHAN` |
+| Durumu kontrol et | `Get-Service -Name CallTrackKARAHAN` |
+| Servisi kaldır | `cd C:\CallTrackKARAHAN` ardından `.\uninstall-service.ps1` |
 
-Windows’ta **Hizmetler** (services.msc) üzerinden “CallTrack MVP - Çağrı Takip” hizmetini de yönetebilirsiniz.
+Windows’ta **Hizmetler** (services.msc) üzerinden “CallTrack KARAHAN - Çağrı Takip” hizmetini de yönetebilirsiniz.
 
 ---
 
@@ -169,9 +171,43 @@ Sunucuya ağ üzerinden erişmek için:
 1. **Sunucu IP adresini** öğrenin: `ipconfig` → IPv4 Adresi  
 2. **Windows Güvenlik Duvarı** kuralı ekleyin (Yönetici PowerShell):
    ```powershell
-   New-NetFirewallRule -DisplayName "CallTrack MVP Port 50201" -Direction Inbound -LocalPort 50201 -Protocol TCP -Action Allow
+   New-NetFirewallRule -DisplayName "CallTrack KARAHAN Port 5520" -Direction Inbound -LocalPort 5520 -Protocol TCP -Action Allow
    ```
-3. İstemci tarayıcıda: **http://SUNUCU_IP:50201**
+3. İstemci tarayıcıda: **http://SUNUCU_IP:5520**
+
+### 5.1 Sunucu IP Adresi Değişirse – Ağdaki Diğer Bilgisayarlar Nasıl Bağlanır?
+
+Sunucu makinesinin IP adresi değiştiğinde (örn. 192.168.1.5 → 192.168.2.5), sunucudaki tarayıcı **localhost** ile çalışmaya devam eder; ancak ağdaki diğer bilgisayarlar eski IP ile erişemez. Çözümler:
+
+#### Önerilen: Sabit IP Kullanımı
+
+Sunucunun IP’sinin değişmemesini sağlayın:
+
+| Yöntem | Açıklama |
+|--------|----------|
+| **Yönlendiricide DHCP rezervasyonu** | Router/ modem arayüzünde sunucu bilgisayarın MAC adresine sabit IP atayın (örn. 192.168.1.100). Böylece her açılışta aynı IP verilir. |
+| **Bilgisayarda statik IP** | Sunucu makinede Ağ Ayarları → IPv4’ü “Manuel” yapıp sabit IP girin. |
+
+IP sabit kalırsa ağdaki kullanıcılar sürekli aynı adresi kullanır; bookmark ve kısayollar bozulmaz.
+
+#### Alternatif: Bilgisayar Adı ile Erişim
+
+IP yerine sunucu bilgisayarın adını kullanın:
+
+```
+http://SUNUCU-BILGISAYAR-ADI:5520
+```
+
+Örn. bilgisayar adı “MUHASEBE-PC” ise: `http://MUHASEBE-PC:5520`  
+Bilgisayar adı: **Ayarlar → Sistem → Hakkında** veya `hostname` komutu ile öğrenilebilir.
+
+Bu yöntem aynı ağ ve workgroup içinde çalışır; IP değişse bile adres aynı kalır. Bazı kurumsal ağlarda DNS/Bonjour olmadan çözümlemeyebilir.
+
+#### IP Değiştiğinde Yapılacaklar
+
+1. Sunucuda **ipconfig** ile yeni IPv4 adresini öğrenin.
+2. Ağdaki kullanıcılara yeni adresi bildirin: **http://YENİ_IP:5520**
+3. Tarayıcı sık kullanılanlarını ve masaüstü kısayollarını güncellemelerini isteyin.
 
 ---
 
@@ -182,7 +218,7 @@ Kod değişikliği veya yeni sürüm sonrası:
 1. Yeniden publish edin; Publish klasörünü sunucuya kopyalayın (mevcut klasörün üzerine yazın).  
 2. Sunucuda:
    ```powershell
-   cd C:\CallTrackMVP
+   cd C:\CallTrackKARAHAN
    .\uninstall-service.ps1
    .\install-service.ps1
    ```
@@ -193,8 +229,8 @@ Kod değişikliği veya yeni sürüm sonrası:
 
 ### Sayfa açılmıyor / “Güvenli bağlantı sağlayamıyor” (ERR_SSL_PROTOCOL_ERROR)
 
-- Service modunda **http://localhost:50201** kullanın (https değil).  
-- Servisi yeniden başlatın: `Restart-Service -Name CallTrackMVP`
+- Service modunda **http://localhost:5520** kullanın (https değil).  
+- Servisi yeniden başlatın: `Restart-Service -Name CallTrackKARAHAN`
 
 ### Port 50201 kullanımda
 
@@ -202,27 +238,27 @@ Kod değişikliği veya yeni sürüm sonrası:
 
 Manuel kurulum yaptıysanız veya portu sonradan değiştirmek istiyorsanız, **sadece Publish klasörüne sahipseniz** portu ortam değişkeni ile değiştirin (kod veya solution gerekmez):
 
-1. **Yeni portu seçin** (örn. 50202 veya 50500). Boş olduğundan emin olun.
+1. **Yeni portu seçin** (örn. 50202, 5520 veya 50500). 1024’ün üzerinde yüksek port tercih edin; düşük portlar (1–1023) Windows’ta kısıtlı olabilir. Port boş olduğundan emin olun.
 2. **Sistem ortam değişkeni ekleyin** — Yönetici PowerShell:
    ```powershell
-   [Environment]::SetEnvironmentVariable("ASPNETCORE_URLS", "http://0.0.0.0:50202", "Machine")
+   [Environment]::SetEnvironmentVariable("ASPNETCORE_URLS", "http://0.0.0.0:5520", "Machine")
    ```
-   (Örnekte port 50202; istediğiniz portu yazın.)
+   (Örnekte port 5520; istediğiniz portu yazın. 5520 gibi yüksek portlar önerilir.)
 3. **Servisi yeniden başlatın** (ortam değişkeni servis hesabına yansısın diye):
    ```powershell
-   Restart-Service -Name CallTrackMVP
+   Restart-Service -Name CallTrackKARAHAN
    ```
-4. Tarayıcıda artık **http://localhost:50202** (veya seçtiğiniz port) kullanın. LAN’dan erişimde de aynı portu kullanın ve güvenlik duvarında bu portu açın.
+4. Tarayıcıda artık **http://localhost:5520** (veya seçtiğiniz port) kullanın. LAN’dan erişimde de aynı portu kullanın ve güvenlik duvarında bu portu açın (örn. `New-NetFirewallRule -DisplayName "CallTrack KARAHAN Port 5520" -Direction Inbound -LocalPort 5520 -Protocol TCP -Action Allow`).
 
 ### Veritabanı kilitli (SQLite locked)
 
-- Aynı makinede tek bir CallTrack MVP örneği çalıştığından emin olun.  
+- Aynı makinede tek bir CallTrack KARAHAN örneği çalıştığından emin olun.  
 - Service’i durdurup tekrar başlatın.
 
 ### Servis kurulurken hata
 
 - PowerShell’i **Yönetici olarak** çalıştırın.  
-- Script’i **Publish klasörü içinden** çalıştırın (CallTrackMVP.Web.exe ile aynı dizin).  
+- Script’i **Publish klasörü içinden** çalıştırın (CallTrackKARAHAN.Web.exe ile aynı dizin).  
 - `.\install-service.ps1` çalıştırma ilkesi engelliyorsa: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
 ---
@@ -231,12 +267,12 @@ Manuel kurulum yaptıysanız veya portu sonradan değiştirmek istiyorsanız, **
 
 | Konu | Değer |
 |------|--------|
-| **Tek paket kurulum** | **CallTrackMVP_Setup.exe**’ye çift tıklayın (yönetici izni verin); tek dosya, .NET gerekmez |
-| **Publish + Kurulum.bat** | Publish içindeki **Kurulum.bat**’e çift tıklayın; C:\CallTrackMVP oluşturulur, .NET 8 Runtime gerekir |
-| Service adı | CallTrackMVP |
-| Görünen ad | CallTrack MVP - Çağrı Takip |
-| Service erişim adresi | http://localhost:50201 (port meşgulse 50202) |
-| Kurulum klasörü | C:\CallTrackMVP (Kurulum.bat her zaman bu klasörü oluşturup dosyaları oraya kopyalar) |
+| **Tek paket kurulum** | **CallTrackKARAHAN_Setup.exe**’ye çift tıklayın (yönetici izni verin); tek dosya, .NET gerekmez |
+| **Publish + Kurulum.bat** | Publish içindeki **Kurulum.bat**’e çift tıklayın; C:\CallTrackKARAHAN oluşturulur, .NET 8 Runtime gerekir |
+| Service adı | CallTrackKARAHAN |
+| Görünen ad | CallTrack KARAHAN - Çağrı Takip |
+| Service erişim adresi | http://localhost:5520 (port meşgulse 5521) |
+| Kurulum klasörü | C:\CallTrackKARAHAN (Kurulum.bat her zaman bu klasörü oluşturup dosyaları oraya kopyalar) |
 | Veritabanı dosyası | `Data\CallTrack.db` (exe yanında) |
 | Varsayılan admin | admin / Admin123! |
 

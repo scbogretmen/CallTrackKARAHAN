@@ -30,11 +30,11 @@ artifacts/
 *.db-wal
 
 # Installer build artifacts
-CallTrackMVP.Installer/_payload/
-CallTrackMVP.Installer/payload.zip
-CallTrackMVP.Installer/bin/
-CallTrackMVP.Installer/obj/
-CallTrackMVP_Setup.exe
+CallTrackKARAHAN.Installer/_payload/
+CallTrackKARAHAN.Installer/payload.zip
+CallTrackKARAHAN.Installer/bin/
+CallTrackKARAHAN.Installer/obj/
+CallTrackKARAHAN_Setup.exe
 
 # OS
 Thumbs.db

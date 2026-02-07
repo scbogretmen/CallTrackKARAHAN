@@ -2,7 +2,7 @@
 
 ## Proje Özeti
 
-**CallTrack MVP** (Çağrı Takip), müşteri çağrılarının kaydını tutan, takibini ve raporlamasını yapan bir web uygulamasıdır. Yerel ağda (LAN) çalışır; Windows Service olarak sürekli çalışabilir.
+**CallTrack KARAHAN** (Çağrı Takip), müşteri çağrılarının kaydını tutan, takibini ve raporlamasını yapan bir web uygulamasıdır. Yerel ağda (LAN) çalışır; Windows Service olarak sürekli çalışabilir.
 
 ### Amaç
 
@@ -36,8 +36,8 @@
 
 ```
 Vestel/
-├── CallTrackMVP.sln
-├── CallTrackMVP.Web/           # Ana web uygulaması
+├── CallTrackKARAHAN.sln
+├── CallTrackKARAHAN.Web/           # Ana web uygulaması
 │   ├── Controllers/
 │   ├── Data/
 │   ├── Migrations/
@@ -46,7 +46,7 @@ Vestel/
 │   ├── Views/
 │   ├── wwwroot/
 │   └── Program.cs
-├── CallTrackMVP.Installer/     # Tek paket kurulum EXE üreticisi
+├── CallTrackKARAHAN.Installer/     # Tek paket kurulum EXE üreticisi
 │   └── Program.cs
 ├── Publish/                    # Dağıtım klasörü (exe, dll, scriptler)
 ├── build-installer.ps1         # Kurulum EXE oluşturma scripti
@@ -101,14 +101,15 @@ Vestel/
 
 ### Kurulum Seçenekleri
 
-1. **Tek paket EXE:** CallTrackMVP_Setup.exe – tüm bileşenler içinde, .NET gerektirmez  
-2. **Publish + Kurulum.bat:** Publish klasörü + Kurulum.bat ile C:\CallTrackMVP’e kurulum  
-3. **Manuel:** Publish’i C:\CallTrackMVP’e kopyalayıp `install-service.ps1` çalıştırma  
+1. **Tek paket EXE:** CallTrackKARAHAN_Setup.exe – tüm bileşenler içinde, .NET gerektirmez  
+2. **Publish + Kurulum.bat:** Publish klasörü + Kurulum.bat ile C:\CallTrackKARAHAN’e kurulum  
+3. **Manuel:** Publish’i C:\CallTrackKARAHAN’e kopyalayıp `install-service.ps1` çalıştırma  
 
 ### Ağ Erişimi
 
 - **Sunucudan:** http://localhost:50201  
-- **LAN’dan:** http://sunucu-ip;:50201  
+- **LAN’dan:** http://sunucu-ip:50201  
+- Port değişimi: `ASPNETCORE_URLS`; önerilen alternatif: 50202, 5520.
 - Windows Güvenlik Duvarı kuralı kurulum script’i ile eklenir  
 
 ---
@@ -124,5 +125,6 @@ Vestel/
 
 ## İlgili Dokümanlar
 
+- **GitHub:** [https://github.com/scbogretmen/CallTrackKARAHAN](https://github.com/scbogretmen/CallTrackKARAHAN)
 - **KURULUM_KILAVUZU.md** – Kurulum ve kullanım adımları  
 - **GUNCELLEMELER.md** – Sürüm notları ve güncellemeler  

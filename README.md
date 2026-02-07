@@ -1,4 +1,6 @@
-# CallTrack MVP – Çağrı Takip
+# CallTrack KARAHAN – Çağrı Takip
+
+[![GitHub](https://img.shields.io/badge/GitHub-CallTrackKARAHAN-blue?logo=github)](https://github.com/scbogretmen/CallTrackKARAHAN)
 
 Müşteri çağrılarının kaydını tutan, takibini ve raporlamasını yapan web uygulaması. Yerel ağda (LAN) çalışır; Windows Service olarak sürekli çalışabilir.
 
@@ -19,8 +21,8 @@ Müşteri çağrılarının kaydını tutan, takibini ve raporlamasını yapan w
 
 ### Kurulum (kullanıcı tarafı)
 
-1. **CallTrackMVP_Setup.exe** dosyasını indirip çalıştırın (yönetici izni verin).
-2. Tarayıcıda **http://localhost:50201** açılır.
+1. **CallTrackKARAHAN_Setup.exe** dosyasını indirip çalıştırın (yönetici izni verin).
+2. Tarayıcıda **http://localhost:5520** (veya 5521, port meşgulse) açılır.
 3. Varsayılan giriş: **admin** / **Admin123!** (ilk girişten sonra şifreyi değiştirin).
 
 Kurulum EXE yoksa: Publish klasörünü kopyalayıp **Kurulum.bat** ile kurulum yapılabilir (ayrıntı için [KURULUM_KILAVUZU.md](KURULUM_KILAVUZU.md)).
@@ -28,12 +30,12 @@ Kurulum EXE yoksa: Publish klasörünü kopyalayıp **Kurulum.bat** ile kurulum 
 ### Geliştirme (geliştirici tarafı)
 
 ```bash
-git clone https://github.com/scbogretmen/CallTrackMVP.git
-cd CallTrackMVP
+git clone https://github.com/scbogretmen/CallTrackKARAHAN.git
+cd CallTrackKARAHAN
 ```
 
-- **Visual Studio** veya **VS Code** ile `CallTrackMVP.sln` açın.
-- `CallTrackMVP.Web` projesini çalıştırın; tarayıcıda https://localhost:50201 açılır.
+- **Visual Studio** veya **VS Code** ile `CallTrackKARAHAN.sln` açın.
+- `CallTrackKARAHAN.Web` projesini çalıştırın; tarayıcıda https://localhost:50201 açılır.
 - Veritabanı ilk çalıştırmada oluşturulur ve varsayılan kullanıcılar eklenir.
 
 ### Publish klasörü oluşturma
@@ -41,7 +43,7 @@ cd CallTrackMVP
 Proje kökünde:
 
 ```powershell
-dotnet publish CallTrackMVP.Web\CallTrackMVP.Web.csproj -c Release -o Publish
+dotnet publish CallTrackKARAHAN.Web\CallTrackKARAHAN.Web.csproj -c Release -o Publish
 ```
 
 Çıktı: `Publish` klasörü – Kurulum.bat ile kurulabilir.
@@ -54,7 +56,7 @@ Proje kökünde PowerShell:
 .\build-installer.ps1
 ```
 
-Çıktı: `CallTrackMVP.Installer\bin\SetupOutput\CallTrackMVP_Setup.exe`
+Çıktı: `CallTrackKARAHAN.Installer\bin\SetupOutput\CallTrackKARAHAN_Setup.exe`
 
 ## Dokümantasyon
 
@@ -70,6 +72,10 @@ Proje kökünde PowerShell:
 
 - **Windows**
 - Kurulum EXE kullanılıyorsa ek gereksinim yok; Publish + Kurulum.bat için **.NET 8 Runtime** gerekir.
+
+## Kaynak Kod
+
+- **GitHub:** [https://github.com/scbogretmen/CallTrackKARAHAN](https://github.com/scbogretmen/CallTrackKARAHAN)
 
 ## Lisans
 

@@ -1,6 +1,6 @@
 # 02 – Kod Referansları
 
-Bu dosya, CallTrack MVP projesindeki önemli sınıflar, route’lar ve kod konumları için hızlı referans sağlar.
+Bu dosya, CallTrack KARAHAN projesindeki önemli sınıflar, route’lar ve kod konumları için hızlı referans sağlar.
 
 ---
 
@@ -32,7 +32,7 @@ Bu dosya, CallTrack MVP projesindeki önemli sınıflar, route’lar ve kod konu
 ## Controllers
 
 ### HomeController
-**Dosya:** `CallTrackMVP.Web/Controllers/HomeController.cs`
+**Dosya:** `CallTrackKARAHAN.Web/Controllers/HomeController.cs`
 
 | Metod | Açıklama |
 |-------|----------|
@@ -40,7 +40,7 @@ Bu dosya, CallTrack MVP projesindeki önemli sınıflar, route’lar ve kod konu
 | `Error` | Hata sayfası (AllowAnonymous). |
 
 ### AuthController
-**Dosya:** `CallTrackMVP.Web/Controllers/AuthController.cs`
+**Dosya:** `CallTrackKARAHAN.Web/Controllers/AuthController.cs`
 
 | Metod | Açıklama |
 |-------|----------|
@@ -50,7 +50,7 @@ Bu dosya, CallTrack MVP projesindeki önemli sınıflar, route’lar ve kod konu
 **Önemli:** `PasswordHasher<AppUser>` kullanılır; şema adı `CookieAuth`.
 
 ### CallLogsController
-**Dosya:** `CallTrackMVP.Web/Controllers/CallLogsController.cs`
+**Dosya:** `CallTrackKARAHAN.Web/Controllers/CallLogsController.cs`
 
 | Metod | Açıklama |
 |-------|----------|
@@ -64,7 +64,7 @@ Bu dosya, CallTrack MVP projesindeki önemli sınıflar, route’lar ve kod konu
 **Yardımcı:** `GetCurrentUserId()`, `IsAdmin`, `GetFilteredQuery()` – User rolünde kendi kayıtları filtreler.
 
 ### AdminController
-**Dosya:** `CallTrackMVP.Web/Controllers/AdminController.cs`
+**Dosya:** `CallTrackKARAHAN.Web/Controllers/AdminController.cs`
 
 | Metod | Açıklama |
 |-------|----------|
